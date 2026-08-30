@@ -1,0 +1,36 @@
+.match-result {
+  margin-top: 24px;
+  padding: 28px 24px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.match-result.is-match {
+  background: #eafaf1;
+  border-color: #b7efcf;
+}
+
+.match-result.not-match {
+  background: #f3f4f6;
+  border-color: #e2e3e5;
+}
+
+.result-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #dc143c;
+  margin-bottom: 8px;
+}
+
+.match-result.not-match .result-heading {
+  color: #6c757d;
+}
+
+.result-message {
+  color: #444;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
