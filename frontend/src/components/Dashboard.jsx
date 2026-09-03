@@ -87,15 +87,51 @@ function Dashboard() {
     navigate("/login");
   };
 
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to permanently delete your account? This action cannot be undone."
+    );
+    if (!confirmed) return;
+    setError("");
+    setChecking(true);
+    try {
+      const response = await fetch(`${API_URL}/api/v1/auth/me`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Could not delete the account. Please try again.");
+      }
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      navigate("/login");
+    } catch (err) {
+      setError(err.message || "Could not delete the account.");
+    } finally {
+      setChecking(false);
+    }
+  };
+
   return (
     <div className="dashboard">
       <header className="dashboard-header">
         <div className="dashboard-logo">
           match<span>.com</span>
         </div>
-        <button className="dashboard-logout" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className="dashboard-actions">
+          <button
+            className="dashboard-delete"
+            onClick={handleDeleteAccount}
+            disabled={checking}
+          >
+            Delete Account
+          </button>
+          <button className="dashboard-logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </header>
 
       <main className="dashboard-main">

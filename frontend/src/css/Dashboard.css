@@ -27,6 +27,12 @@
   color: #555;
 }
 
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .dashboard-logout {
   padding: 8px 18px;
   background: #dc143c;
@@ -40,6 +46,28 @@
 
 .dashboard-logout:hover {
   background: #b91230;
+}
+
+.dashboard-delete {
+  padding: 8px 18px;
+  background: transparent;
+  color: #b91230;
+  border: 1px solid #dc143c;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-delete:hover:not(:disabled) {
+  background: #dc143c;
+  color: white;
+}
+
+.dashboard-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .dashboard-main {

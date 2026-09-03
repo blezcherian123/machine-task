@@ -72,6 +72,10 @@ class MeView(APIView):
     def get(self, request):
         return Response(UserSerializer(request.user).data)
 
+    def delete(self, request):
+        request.user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class MatchListCreateView(APIView):
     permission_classes = [IsAuthenticated]
